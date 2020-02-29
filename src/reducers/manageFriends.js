@@ -1,14 +1,14 @@
 export function manageFriends(state, action) {
   switch (action.type) {
     case "ADD_FRIEND":
-      let newFriends = ;
-      return { friends: [
-        ...state.friends,
-action.friend
-]};
+      return { friends: [...state.friends, action.friend] };
     case "REMOVE_FRIEND":
-      let newFriends = state.friends.splice(action.id, 1);
-      return { friends: newFriends};
+      var newFriends = state.friends.filter(f => {
+        if (f.id !== action.id) {
+          return f;
+        }
+      });
+      return { friends: newFriends };
     default:
       return state;
   }
